@@ -10,7 +10,6 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { Icons } from "~/components/ui/icons";
 import DeleteSchemaDialog from "./delete-schema-dialog";
-import ShareSchemaDialogContent from "./share-schema-dialog-content";
 
 interface SchemaOperationsProps {
   schema: Pick<Schema, "id" | "title">;
@@ -49,12 +48,6 @@ export function SchemaOperations({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      {showShareDialog && (
-        <ShareSchemaDialogContent
-          schemaId={schema.id}
-          onOperationDone={() => setShowShareDialog(false)}
-        />
-      )}
       <DeleteSchemaDialog
         onOperationDone={onOperationDone}
         schemaId={schema.id}

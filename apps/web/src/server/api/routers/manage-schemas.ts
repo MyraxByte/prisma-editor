@@ -1,4 +1,3 @@
-import { type Permission } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { string, z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
@@ -30,14 +29,7 @@ export const manageSchemaRouter = createTRPCRouter({
       const schema = await prisma.schema.findUnique({
         where: { id: input.id },
         select: {
-          schema: true,
-          shareSchema: {
-            select: {
-              id: true,
-              token: true,
-              permission: true,
-            },
-          },
+          schema: true
         },
       });
 

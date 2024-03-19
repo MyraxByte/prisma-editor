@@ -20,7 +20,7 @@ export default function Dashboard() {
   }
 
   return (
-    <Layout>
+    <Layout className="dots">
       <Head>
         <title>My Schemas | Prisma Editor</title>
       </Head>

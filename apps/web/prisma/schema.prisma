@@ -28,16 +28,6 @@ model Schema {
     createdAt   DateTime     @default(now())
     updatedAt   DateTime     @updatedAt
     schema      String?
-    shareSchema ShareSchema? @relation(name: "SchemaToShareSchema")
-}
-
-model ShareSchema {
-    id          Int        @id @default(autoincrement())
-    schema      Schema?    @relation(name: "SchemaToShareSchema", fields: [schemaId], references: [id])
-    schemaId    Int?       @unique
-    token       String?    @default(cuid())
-    createdAt   DateTime?  @default(now())
-    permission  Permission
 }
 
 enum Permission {

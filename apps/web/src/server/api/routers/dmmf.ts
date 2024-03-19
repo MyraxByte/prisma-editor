@@ -4,8 +4,6 @@ import {
   type DMMF,
 } from "@prisma-editor/prisma-dmmf-extended";
 import { type ConfigMetaFormat } from "@prisma/internals";
-import { execa } from "execa";
-import fs from "fs";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
@@ -38,19 +36,4 @@ export const dmmfRouter = createTRPCRouter({
   schemaToDmmf: publicProcedure
     .input(z.string())
     .mutation(async ({ input }) => await schemaToDmmf(input)),
-
-  schemaToSql: publicProcedure.input(z.string()).mutation(async ({ input }) => {
-    const schemafile = "./temp.prisma";
-    fs.writeFileSync(schemafile, input);
-    const { stdout } = await execa("./node_modules/.bin/prisma", [
-      "migrate",
-      "diff",
-      "--to-schema-datamodel",
-      schemafile,
-      "--from-empty",
-      "--script",
-    ]);
-
-    return stdout;
-  }),
 });

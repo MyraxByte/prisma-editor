@@ -450,9 +450,7 @@ const createSchema = (schemaId: string | number) =>
         },
         parseToSql: async () => {
           set((state) => ({ ...state, isSqlLoading: true }));
-
-          const sql = await apiClient.dmmf.schemaToSql.mutate(state().schema);
-          set((state) => ({ ...state, sql, isSqlLoading: false }));
+          set((state) => ({ ...state, isSqlLoading: false }));
         },
       }),
       { name: `${schemaId}` }
