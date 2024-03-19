@@ -35,8 +35,8 @@ const CodeEditor = () => {
           className={clsx(
             "flex h-full cursor-pointer items-center gap-2 px-4 py-2  ",
             openTab === "prisma"
-              ? "bg-slate-500 dark:bg-[#1e1e1e]"
-              : "bg-slate-400 dark:bg-[#2d2d2d]"
+              ? "bg-slate-500 dark:bg-[#181a1f]"
+              : "bg-slate-400 dark:bg-[transparent]"
           )}
           onClick={() => {
             setOpenTab("prisma");
@@ -54,7 +54,7 @@ const CodeEditor = () => {
           className={clsx(
             "flex h-full cursor-pointer items-center gap-2 px-4 py-2  ",
             openTab === "sql"
-              ? "bg-slate-500 dark:bg-[#1e1e1e]"
+              ? "bg-slate-500 dark:bg-[#181a1f]"
               : "bg-slate-400 dark:bg-[#2d2d2d]"
           )}
           onClick={() => setOpenTab("sql")}

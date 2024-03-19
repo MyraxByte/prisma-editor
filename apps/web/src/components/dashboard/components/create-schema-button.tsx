@@ -46,7 +46,7 @@ export function SchemaCreateButton({
         <DialogTrigger>
           <Button
             className={cn(
-              "text-lg",
+              "text-md",
               {
                 "cursor-not-allowed opacity-60": isLoading,
               },

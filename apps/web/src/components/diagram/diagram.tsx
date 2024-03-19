@@ -54,7 +54,7 @@ const Diagram = () => {
               onEdgesChange={onEdgesChange}
               onNodesChange={onNodesChange}
             >
-              <Background color="grey" />
+              <Background />
             </ReactFlow>
           </DiagramContextMenu>
         </div>

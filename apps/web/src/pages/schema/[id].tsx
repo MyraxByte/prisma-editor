@@ -1,4 +1,3 @@
-import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -44,20 +43,7 @@ const Schema = () => {
     }
   }, [isNotPlayground, restoreSavedSchema, router.query.token]);
 
-  const { status } = useSession();
-
-  useEffect(() => {
-    if (status === "unauthenticated" && isNotPlayground) {
-      void signIn("github", { callbackUrl: router.asPath });
-    }
-  }, [isNotPlayground, router.asPath, status]);
-
-  if (
-    !isPlayground &&
-    (status === "loading" ||
-      status === "unauthenticated" ||
-      !isRestoreSchemaDone)
-  ) {
+  if (!isPlayground && (!isRestoreSchemaDone)) {
     return (
       <Layout className="h-screen">
         <LoadingScreen />
@@ -66,20 +52,20 @@ const Schema = () => {
   }
 
   return (
-    <Layout showPromptButton className="h-screen">
+    <Layout className="h-screen">
       <Head>
         <title>Edit Schema | Prisma Editor</title>
       </Head>
-      <div className="h-[calc(100%-65px)] overflow-hidden">
+      <div className="h-[calc(100%-48px)] overflow-hidden">
         <PanelGroup autoSaveId="example" direction="horizontal">
           <Panel defaultSize={20} minSize={0}>
-            <div className="h-full w-full overflow-hidden bg-slate-100 dark:bg-[#1e1e1e]">
+            <div className="h-full w-full overflow-hidden bg-slate-100 dark:bg-black/25">
               <CodeEditor key="code" />
             </div>
           </Panel>
           <ResizeHandle />
           <Panel minSize={0}>
-            <div className="h-full w-full overflow-hidden bg-slate-100 dark:bg-[#1e1e1e]">
+            <div className="h-full w-full overflow-hidden bg-slate-100 dark:bg-black/25">
               <ReactFlowProvider>
                 <Diagram />
               </ReactFlowProvider>

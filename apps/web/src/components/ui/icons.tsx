@@ -33,7 +33,7 @@ export const Icons = {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 159 194"
       fill="none"
-      className={cn("h-8 w-8", className)}
+      className={cn("h-5 w-5", className)}
       {...props}
     >
       <path

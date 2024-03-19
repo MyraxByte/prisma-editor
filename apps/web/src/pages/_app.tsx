@@ -1,17 +1,10 @@
 import { type AppType } from "next/app";
-import { type Session } from "next-auth";
-import { SessionProvider } from "next-auth/react";
 import { api } from "~/utils/api";
-import Head from "next/head";
-import Script from "next/script";
 import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
 import "~/styles/globals.css";
 
-const MyApp: AppType<{ session: Session | null }> = ({
-  Component,
-  pageProps: { session, ...pageProps },
-}) => {
+const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
   const title = "Prisma Editor | Visualize and Edit Prisma Schemas";
   const description =
     "Prisma Editor: Prisma Schema Editor, Prisma Schema visualization, visualize and edit Prisma schemas.";
@@ -41,35 +34,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
           },
         ]}
       />
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="8U9A6jsEwr0vCbYVqJC33MwLSq7YNbk5uRIz8EJdKjs"
-        />
-        <meta
-          name="google-site-verification"
-          content="JASFKuP84nQMaTJje9zpZ6EVmipJnzcQv37h8t1Kuv4"
-        />
-        <meta name="msvalidate.01" content="548C832C1081145B2047BAB9C7452E7F" />
-      </Head>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-F8EGGW12QB"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-F8EGGW12QB');
-        `}
-      </Script>
-      <SessionProvider session={session}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Component {...pageProps} />
         </ThemeProvider>
-      </SessionProvider>
     </>
   );
 };

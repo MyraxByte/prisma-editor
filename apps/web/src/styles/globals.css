@@ -54,7 +54,11 @@
 }
 
 .dark .dots {
-  background: linear-gradient(180deg, transparent 0, #161616 300px),
+  background: linear-gradient(180deg, transparent 0, #0b111e 300px),
     fixed 0 0 /20px 20px radial-gradient(#6b6b6b 1px, transparent 0),
     fixed 10px 10px /20px 20px radial-gradient(#6b6b6b 1px, transparent 0);
+}
+
+#pattern-1 circle {
+  @apply fill-slate-900 dark:fill-slate-700;
 }
